@@ -65,7 +65,7 @@
 			// stats = new Stats();
 			// document.body.appendChild( stats.dom )
 
-			gui = new GUI();
+			//gui = new GUI();
 
 			scene = new THREE.Scene();
 
@@ -147,13 +147,13 @@
 					pointlight.intensity = 1
 					scene.add(pointlight);
 
-					const pointLightHelper = new THREE.PointLightHelper(pointlight, 0.1)
-					scene.add(pointLightHelper);
+					//const pointLightHelper = new THREE.PointLightHelper(pointlight, 0.1)
+					//scene.add(pointLightHelper);
 
-					gui.add(pointlight.position, 'x').min(-3).max(3).step(0.05)
-					gui.add(pointlight.position, 'y').min(-3).max(3).step(0.05)
-					gui.add(pointlight.position, 'z').min(-3).max(3).step(0.05)
-					gui.add(pointlight, 'intensity').min(0).max(10).step(0.5)
+					//gui.add(pointlight.position, 'x').min(-3).max(3).step(0.05)
+					//gui.add(pointlight.position, 'y').min(-3).max(3).step(0.05)
+					//gui.add(pointlight.position, 'z').min(-3).max(3).step(0.05)
+					//gui.add(pointlight, 'intensity').min(0).max(10).step(0.5)
 
 					// Ceiling Light
 					const ceilinglight = new THREE.PointLight(0xffffff, 0.75);
@@ -161,8 +161,8 @@
 					ceilinglight.intensity = 0.5
 					scene.add(ceilinglight);
 
-					const ceilinglightHelper = new THREE.PointLightHelper(ceilinglight, 0.1)
-					scene.add(ceilinglightHelper);
+					//const ceilinglightHelper = new THREE.PointLightHelper(ceilinglight, 0.1)
+					//scene.add(ceilinglightHelper);
 					
 
 					// model
