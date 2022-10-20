@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    background-color: #705f73;
+}
+.webgl {
+    position: fixed;
+    width: 0;
+    left: 0;
+    outline: none;
+}
