@@ -1,3 +1,12 @@
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "../build/three.module.js",
+				"three/addons/": "./jsm/"
+			}
+		}
+	</script>
+		
 	<script type="x-shader/x-vertex" id="vertexshader">
 
 		attribute float size;
