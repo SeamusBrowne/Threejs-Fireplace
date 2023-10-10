@@ -128,7 +128,7 @@
 			geometry.attributes.angle.needsUpdate = true;
 
 			particleSystem = new THREE.Points(geometry, shaderMaterial);
-			particleSystem.position.set(0, -0.7, 0.1);
+			particleSystem.position.set(0.001, -1.21, -0.18);
 			scene.add(particleSystem);
 
 
@@ -147,22 +147,8 @@
 
 					render();
 
-					// const light = new THREE.AmbientLight( 0xffffff, 0.75);
-					// scene.add(light);
-
-					// const pointlight = new THREE.PointLight(0xff5a00, 0.75);	// Orange flame colour
-					const pointlight = new THREE.PointLight(0xff0000, 0.75);
-					pointlight.position.set(1, 2, 1)
-					pointlight.intensity = 1
-					scene.add(pointlight);
-
-					//const pointLightHelper = new THREE.PointLightHelper(pointlight, 0.1)
-					//scene.add(pointLightHelper);
-
-					//gui.add(pointlight.position, 'x').min(-3).max(3).step(0.05)
-					//gui.add(pointlight.position, 'y').min(-3).max(3).step(0.05)
-					//gui.add(pointlight.position, 'z').min(-3).max(3).step(0.05)
-					//gui.add(pointlight, 'intensity').min(0).max(10).step(0.5)
+					const light = new THREE.AmbientLight( 0xffffff, 0.6);
+					scene.add(light);
 
 					// Ceiling Light
 					const ceilinglight = new THREE.PointLight(0xffffff, 0.75);
@@ -218,6 +204,7 @@
 			controls.target.set(0, 0, - 0.2);
 			controls.update();
 
+			animate();
 
 			window.addEventListener('resize', onWindowResize);
 
