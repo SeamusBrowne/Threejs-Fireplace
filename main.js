@@ -46,19 +46,18 @@
 	<script type="module">
 
 		import * as THREE from 'three';
-		import Stats from './jsm/libs/stats.module.js';
-		import { GUI } from './jsm/libs/dat.gui.module.js';
+		import Stats from 'three/addons/libs/stats.module.js';
+		import { GUI } from 'three/addons/libs/dat.gui.module.js';
 
-		import { OrbitControls } from './jsm/controls/OrbitControls.js';
-		import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-		import { RGBELoader } from './jsm/loaders/RGBELoader.js';
-		import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
+		import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+		import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+		import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 		let camera, scene, renderer, stats, gui;
 
 		let particleSystem, uniforms, geometry;
 
-		const particles = 75;
+		const particles = 50;
 
 		init();
 		render();
@@ -137,13 +136,12 @@
 				.setPath('textures/equirectangular/')
 				.load('royal_esplanade_1k.hdr', function (texture) {
 
-					const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+					texture.mapping = THREE.EquirectangularReflectionMapping;
 
 					scene.background = new THREE.Color( 0x705f73 );
 					scene.environment = envMap;
 
 					texture.dispose();
-					pmremGenerator.dispose();
 
 					render();
 
@@ -170,7 +168,6 @@
 						gltf.scene.traverse(function (child) {
 
 							if (child.isMesh) {
-								// roughnessMipmapper.generateMipmaps( child.material );
 
 							}
 
@@ -178,7 +175,6 @@
 
 						scene.add(gltf.scene);
 
-						roughnessMipmapper.dispose();
 
 						render();
 
@@ -191,11 +187,8 @@
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			renderer.toneMapping = THREE.ACESFilmicToneMapping;
 			renderer.toneMappingExposure = 1;
-			renderer.outputEncoding = THREE.sRGBEncoding;
+			renderer.outputColorSpace = THREE.sRGBColorSpace;
 			container.appendChild(renderer.domElement);
-
-			const pmremGenerator = new THREE.PMREMGenerator(renderer);
-			pmremGenerator.compileEquirectangularShader();
 
 			const controls = new OrbitControls(camera, renderer.domElement);
 			controls.addEventListener('change', render); // use if there is no animation loop
